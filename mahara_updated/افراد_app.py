@@ -354,6 +354,12 @@ def run_afrad_app():
             "id": 1001,
             "files": []
         },
+        "collector_rotation": {
+            "name": "🔄 تدوير المحصلين الذكي",
+            "desc": "تدوير وتبديل جميع عملاء المحصلين بتوازن كامل مبني على متبقي السداد الموثق، مع خيار التدوير تحت نفس المشرف وإضافة كولوم المحصل واليوزر الجديد.",
+            "id": 1002,
+            "files": []
+        },
         "monthly_targets": {
             "name": "📅 التحصيل بالشهور بالمستهدف",
             "desc": "مقارنة تحصيل كل محصل ومشرف شهر بشهر مع المستهدف المالي لكل شهر ونسب الإنجاز بربط رقم المديونية وتاريخ السداد.",
@@ -752,6 +758,14 @@ def run_afrad_app():
             code = f.read()
         code = re.sub(r"st\.set_page_config\([^)]*\)", "pass", code)
         exec(compile(code, send_page, 'exec'), {'__name__': '__main__', '__file__': send_page})
+
+    elif selected_key == "collector_rotation":
+        import re
+        rot_page = os.path.join(THIS_DIR, "قطاع اعمال للاتصالات", "pages", "13_تدوير_المحصلين.py")
+        with open(rot_page, "r", encoding="utf-8") as f:
+            code = f.read()
+        code = re.sub(r"st\.set_page_config\([^)]*\)", "pass", code)
+        exec(compile(code, rot_page, 'exec'), {'__name__': '__main__', '__file__': rot_page})
 
     # ════════════════════════════════════════════════════════════════════
     #  واجهة باقي الموديولات (الموديولات الأصلية كما هي)
